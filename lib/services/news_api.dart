@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:http/http.dart' as http;
 import 'package:news_app/category_enum.dart';
@@ -66,7 +67,7 @@ class NewsApi extends ArticleApi{
   @override
   Future<List<ArticleModel>> getTopArticleList([int pageSize = -1]) async {
     if (topArticleList.length >= pageSize) {
-      return topArticleList;
+      return pageSize < 1 ? topArticleList : topArticleList.sublist(0, pageSize);
     }else{
       topArticleList.clear();
     }
@@ -75,10 +76,6 @@ class NewsApi extends ArticleApi{
       "sources": "techcrunch",
       "apiKey": Env.newsApiKey,
     };
-
-    // if(pageSize > 0){
-    //   queryParameters["pageSize"] = "$pageSize";
-    // }
 
     var url = Uri.https("newsapi.org", "/v2/top-headlines", queryParameters);
     var response = await http.get(url);
@@ -89,15 +86,16 @@ class NewsApi extends ArticleApi{
       log(json["status"]);
       return [];
     }
-
     topArticleList = jsonToArticleModelList(json);
-    return pageSize < 1 ? topArticleList : topArticleList.sublist(0, pageSize);
+
+    int articleCount = math.min(pageSize, topArticleList.length);
+    return pageSize < 1 ? topArticleList : topArticleList.sublist(0, articleCount);
   }
 
   @override
   Future<List<ArticleModel>> getTrendingArticleList([int pageSize = -1]) async {
     if (trendingArticleList.length >= pageSize) {
-      return trendingArticleList;
+      return pageSize < 1 ? trendingArticleList : trendingArticleList.sublist(0, pageSize);
     }else{
       trendingArticleList.clear();
     }
@@ -107,9 +105,6 @@ class NewsApi extends ArticleApi{
       "sources": "techcrunch",
       "apiKey": Env.newsApiKey,
     };
-    // if(pageSize > 0){
-    //   queryParameters["pageSize"] = "$pageSize";
-    // }
 
     var url = Uri.https("newsapi.org", "/v2/everything", queryParameters);
 
@@ -122,7 +117,8 @@ class NewsApi extends ArticleApi{
     }
     trendingArticleList = jsonToArticleModelList(json);
 
-    return pageSize < 1 ? trendingArticleList : trendingArticleList.sublist(0, pageSize);
+    int articleCount = math.min(pageSize, trendingArticleList.length);
+    return pageSize < 1 ? trendingArticleList : trendingArticleList.sublist(0, articleCount);
   }
 
   @override
