@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -17,18 +15,13 @@ class ArticleView extends StatefulWidget{
 }
 
 class _ArticleViewState extends State<ArticleView>{
-  var controller;
-
-  @override
-  void initState() {
-    controller = WebViewController();
-    controller.setJavaScriptMode(JavaScriptMode.unrestricted);
-    controller.loadRequest(Uri.parse(widget.url));
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    var controller = WebViewController();
+    controller.setJavaScriptMode(JavaScriptMode.unrestricted);
+    controller.loadRequest(Uri.parse(widget.url));
+
     return Scaffold(
         appBar: customAppBar(),
         body: WebViewWidget(controller: controller)

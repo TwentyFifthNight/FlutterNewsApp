@@ -26,6 +26,21 @@ class _AllArticlesState extends State<AllArticles>{
   bool _loading = true;
 
   @override
+  void initState() {
+    getNews();
+    super.initState();
+  }
+
+  getNews() async {
+    var articleList = await widget.articleProvider.getArticles();
+
+    setState(() {
+      _loading = false;
+      this.articleList = articleList;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -56,21 +71,6 @@ class _AllArticlesState extends State<AllArticles>{
           )
       ),
     );
-  }
-
-  @override
-  void initState() {
-    getNews();
-    super.initState();
-  }
-
-  getNews() async {
-    var articleList = await widget.articleProvider.getArticles();
-
-    setState(() {
-      _loading = false;
-      this.articleList = articleList;
-    });
   }
 
 }

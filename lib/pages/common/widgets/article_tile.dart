@@ -21,31 +21,29 @@ class ArticleTile extends StatelessWidget{
       onTap: () {
         onTapped(url);
       },
-      child: Container(
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: CachedNetworkImage(
-                imageUrl: urlToImage,
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                fit: BoxFit.cover,
-              ),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: urlToImage,
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              fit: BoxFit.cover,
             ),
-            SizedBox(height: 5,),
-            Text(
-              title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
-              ),
+          ),
+          SizedBox(height: 5,),
+          Text(
+            title,
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18
             ),
-            Text(description),
-            SizedBox(height: 20,),
-          ],
-        ),
+          ),
+          Text(description),
+          SizedBox(height: 20,),
+        ],
       ),
     );
   }

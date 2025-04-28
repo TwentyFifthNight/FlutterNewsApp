@@ -97,28 +97,26 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: customAppBar(),
       body: _loading ? Center(child: CircularProgressIndicator()) : SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              CategoryList(
-                  categoryList: categoryList,
-                  handleCategoryClicked: handleCategoryClicked
-              ),
-              NewsSlider(
-                activeSliderIndex: activeSliderIndex,
-                sliderItemList: sliderArticleList,
-                onPageChanged: handleCarouselPageChanged,
-                onNewsTapped: handleNewsClicked,
-                onViewAllTapped: handleViewAllTopArticles,
-              ),
-              SizedBox(height: 30),
-              TrendingNews(
-                articleList: trendingArticleList,
-                onNewsTapped: handleNewsClicked,
-                onViewAllTapped: handleViewALlTrendingArticles,
-              ),
-            ],
-          ),
+        child: Column(
+          children: [
+            CategoryList(
+                categoryList: categoryList,
+                handleCategoryClicked: handleCategoryClicked
+            ),
+            NewsSlider(
+              activeSliderIndex: activeSliderIndex,
+              sliderItemList: sliderArticleList,
+              onPageChanged: handleCarouselPageChanged,
+              onNewsTapped: handleNewsClicked,
+              onViewAllTapped: handleViewAllTopArticles,
+            ),
+            SizedBox(height: 30),
+            TrendingNews(
+              articleList: trendingArticleList,
+              onNewsTapped: handleNewsClicked,
+              onViewAllTapped: handleViewALlTrendingArticles,
+            ),
+          ],
         ),
       ),
     );

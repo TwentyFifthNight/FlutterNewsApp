@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:news_app/pages/common/widgets/action_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class NewsSlider extends StatelessWidget {
@@ -38,17 +39,7 @@ class NewsSlider extends StatelessWidget {
                   fontSize: 18,
                 ),
               ),
-              GestureDetector(
-                onTap: () {onViewAllTapped();},
-                child: Text(
-                  "View All",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
+              actionButton("View All", onViewAllTapped),
             ],
           ),
         ),

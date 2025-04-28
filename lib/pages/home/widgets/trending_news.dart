@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:news_app/pages/common/widgets/action_button.dart';
 
 class TrendingNews extends StatelessWidget {
   const TrendingNews({
@@ -31,17 +32,7 @@ class TrendingNews extends StatelessWidget {
                   fontSize: 18,
                 ),
               ),
-              GestureDetector(
-                onTap: () {onViewAllTapped();},
-                child: Text(
-                  "View All",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
+              actionButton("View All", onViewAllTapped),
             ],
           ),
         ),
@@ -69,22 +60,20 @@ class TrendingNews extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: CachedNetworkImage(
-                        imageUrl: articleModel.urlToImage ?? "Image missing",
-                        height: MediaQuery.of(context).size.width / 3,
-                        width: MediaQuery.of(context).size.width / 3,
-                        fit: BoxFit.cover,
-                      ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: CachedNetworkImage(
+                      imageUrl: articleModel.urlToImage ?? "Image missing",
+                      height: MediaQuery.of(context).size.width / 3,
+                      width: MediaQuery.of(context).size.width / 3,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Container(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width / 1.8,
                           child: Text(
                             articleModel.title ?? "Title missing",
@@ -98,7 +87,7 @@ class TrendingNews extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Container(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width / 1.8,
                           child: Text(
                             articleModel.description ?? "Description missing",
