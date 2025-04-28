@@ -1,16 +1,14 @@
-# news_app
+# Flutter News App
 
-A new Flutter project.
+## Overview
+  Flutter app for viewing articles with the ability to browse by category and most popular entries using the News API
 
-## Getting Started
+## Configuration
+  1. Download the contents of this repository.
+  2. Rename the “.env.example” file to “.env”.
+  3. Save your API key generated [here](https://newsapi.org/) in the .env file.
+  4. Download all dependencies using the **“dart pub get”** command.
+  5. Generate the file containing your API key using **“dart run build_runner clean”** and **“dart run build_runner build --delete-conflicting-outputs”** commands as instructed [here](https://pub.dev/packages/envied).
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+> [!NOTE] 
+> To use data from the API, change the value of the **"testing"** variable in the **Configuration** class to **false**, otherwise the application will use locally generated data.
