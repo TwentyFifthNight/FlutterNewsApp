@@ -19,7 +19,7 @@ class CategoryArticles extends StatefulWidget{
 class _CategoryArticlesState extends State<CategoryArticles> {
   List<ArticleModel> articleList = [];
   bool _loading = true;
-  ArticleApi articleApi = NewsApi(testing: true);
+  ArticleApi articleApi = NewsApi();
 
   @override
   void initState() {

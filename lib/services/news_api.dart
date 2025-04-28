@@ -4,6 +4,7 @@ import 'dart:math' as math;
 
 import 'package:http/http.dart' as http;
 import 'package:news_app/category_enum.dart';
+import 'package:news_app/configuration.dart';
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/services/article_api.dart';
 
@@ -13,11 +14,9 @@ class NewsApi extends ArticleApi{
   List<ArticleModel> trendingArticleList = [];
   List<ArticleModel> topArticleList = [];
   Map<String, List<ArticleModel>> articleListByCategory = {};
-  bool testing;
 
-
-  NewsApi({required this.testing}){
-    if(testing) {
+  NewsApi(){
+    if(Configuration.testing) {
       for (var i = 0; i < 10; i++) {
         trendingArticleList.add(
           ArticleModel(

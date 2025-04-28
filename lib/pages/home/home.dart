@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
-import 'package:news_app/models/slider_item_model.dart';
 import 'package:news_app/pages/article/article_view.dart';
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/pages/category/category_articles.dart';
@@ -25,7 +24,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ArticleApi articleApi = NewsApi(testing: true);
+  ArticleApi articleApi = NewsApi();
 
   List<CategoryModel> categoryList = [];
   List<ArticleModel> sliderArticleList = [];
