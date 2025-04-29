@@ -12,3 +12,6 @@
 
 > [!NOTE] 
 > To use data from the API, change the value of the **"testing"** variable in the **Configuration** class to **false**, otherwise the application will use locally generated data.
+
+## Credits
+  - Category images from [Pexels](https://www.pexels.com/).
